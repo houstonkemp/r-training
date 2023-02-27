@@ -1,0 +1,99 @@
+---
+title: "Examples"
+author: "Nick Twort"
+date: "2023-02-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+
+```{r}
+x <- data.frame( # make a data frame (table) with two columns called a and b
+  a = 1:10, # 1 to 10
+  b = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j") # combine values into one vector with 10 elements
+)
+x # print x to the console
+```
+
+```{r}
+#    from the tibble package, use the function tibble (to create a tibble)
+y <- tibble::tibble(
+  a = 1:10,
+  b = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
+)
+y # print y to the console
+```
+
+```{r}
+library(tidyverse)
+
+z <- tibble( # don't need to use 
+  a = 1:10,
+  b = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
+)
+z # print z to the console
+```
+
+```{r}
+# What is the output?
+as.integer(c("a",1, 1.5, pi))
+```
+
+```{r}
+mean(1:10)
+```
+
+```{r}
+mean(c(1, 2, NA))
+```
+
+```{r}
+mean(x = c(1, 2, NA), na.rm = TRUE)
+```
+
+```{r}
+c(1, 1.5, pi) + 1
+```
+
+```{r}
+select(z, a)
+select(.data = z, starts_with("a"))
+```
+
+```{r}
+mutate(z, c = paste(a, b))
+```
+
+```{r}
+lubridate::as_date("15022021", format = "%d%m%Y")
+```
+
+```{r}
+pay_data <- tibble(
+  year = c(2022, 2022, 2022, 2023, 2023, 2023),
+  employee = c("Nick", "Tim", "Greg", "Nick", "Tim", "Greg"),
+  gross_pay = c(100, 50, 10, 120, 60, 5),
+  tax = c(50, 0, 1, 60, 5, 1)
+)
+```
+
+```{r}
+summarise(group_by(mutate(pay_data, net_pay = gross_pay - tax), employee), total_net_pay = sum(net_pay))
+
+```
+
+```{r}
+pay_data %>%
+	mutate(net_pay = gross_pay - tax) %>% 
+	group_by(employee) %>%
+	summarise(total_net_pay = sum(net_pay))
+
+# The same as
+# pay_data |> 
+# 	mutate(net_pay = gross_pay - tax) |> 
+# 	group_by(employee) |> 
+# 	summarise(total_net_pay = sum(net_pay))
+```
