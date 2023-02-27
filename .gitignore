@@ -22,3 +22,5 @@ figures/png/*
 !/outputs
 /outputs/*
 !outputs/README.md
+*.html
+*/*_files
