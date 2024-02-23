@@ -75,7 +75,7 @@ cost_by_country_chart <- cost_by_country %>%
 
 
 
-ggsave(filename = "figures/cost_by_country_chart.png",
+ggsave(filename = "figures/png/cost_by_country_chart.png",
        plot = cost_by_country_chart,
        width = 17.00,
        height = 8,
