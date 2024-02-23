@@ -1,4 +1,4 @@
-# R at HoustonKemp - training February 2023
+# R at HoustonKemp - training February 2024
 
 This repository contains some examples for working with R at HoustonKemp, and some exercises to work through.
 
